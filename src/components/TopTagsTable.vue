@@ -57,7 +57,7 @@ section {
   transform: translate(-50%, -50%);
 }
 img {
-  max-width: 350px;
+  max-width: 300px;
   max-height: 200px;
   border: 5px black solid;
 }

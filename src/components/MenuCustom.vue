@@ -20,7 +20,7 @@ export default {
 #nav {
   padding: 30px;
   padding-bottom: 20px;
-  font-size: 1.3rem;
+  font-size: 0.82rem;
 }
 
 #nav a {
@@ -31,4 +31,10 @@ export default {
 #nav a.router-link-exact-active {
   color: white;
 }
+@media (min-width: 600px) {
+#nav {
+  font-size: 1.5rem;
+}
+}
+
 </style>
