@@ -54,7 +54,7 @@ export default {
   justify-content: center;
   color: white;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 p {
   background-color: rgba(0, 0, 0, 0.7);
@@ -66,6 +66,7 @@ ul {
   background-size: 100%;
   min-width: 50%;
   padding: 2rem;
+  position: relative;
 }
 a {    
   color: white;
@@ -76,11 +77,11 @@ a {
   border-radius: 50%;
 }
 button {
-  min-width: 50px;
-  min-height: 50px;
+  min-width: 45px;
+  min-height: 45px;
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 0.1rem;
+  left: 0.1rem;
   background-color: rgb(185, 169, 169);
   border: 2px solid black;
   border-radius: 10px;

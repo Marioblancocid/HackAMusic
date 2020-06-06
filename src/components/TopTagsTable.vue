@@ -33,9 +33,10 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 0
 }
 li {
-  margin: 0.334rem;
+  margin: 0.4rem;
   position: relative;
   color: white;
   font-weight: bold;
@@ -56,8 +57,8 @@ section {
   transform: translate(-50%, -50%);
 }
 img {
-  max-width: 300px;
-  max-height: 190px;
+  max-width: 350px;
+  max-height: 200px;
   border: 5px black solid;
 }
 </style>

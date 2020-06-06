@@ -19,7 +19,8 @@ export default {
 
 #nav {
   padding: 30px;
-  font-size: 2rem;
+  padding-bottom: 20px;
+  font-size: 1.3rem;
 }
 
 #nav a {
