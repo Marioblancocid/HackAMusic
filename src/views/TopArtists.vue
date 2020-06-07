@@ -1,26 +1,45 @@
 <template>
-  <div class="topartists">
-    <vue-headful title="Top Artists"
-    description="The top music artists in spain"/>
-    <MenuCustom></MenuCustom>
-    <div class="lds-facebook" v-show=!loading><div></div><div></div><div></div></div>
-    <p v-show=!loading id="loading"> Loading, please wait...</p>
-    <!--BARRA DE BÚSQUEDA POR NAME, GENDER, STATUS E ID-->
-    <label for="bySearch" v-show="loading">
-      Busca un artista: 
-    <input v-model="search" type="search" name="bySearch" placeholder="Búsqueda...">
-  </label>
-    <TopArtistsTable :artists="filteredArtists" v-show="loading"></TopArtistsTable>
-  </div>
+<div class="topartists">
+  
+<!--APLICAMOS EL CAMBIO DE NOMBRE DINAMICO-->
+<vue-headful title="Top Artists"
+description="The top music artists in spain"/>
+
+
+<!--IMPORTAMOS BARRA DE LINKS--> 
+<MenuCustom></MenuCustom>
+
+
+<!--CARGAMOS EL LOADING DIV QUE DESAPARECERÁ AL CARGAR-->
+<div class="lds-facebook" v-show=!loading><div></div><div></div><div></div></div>
+<p v-show=!loading id="loading"> Loading, please wait...</p>
+
+
+<!--CARGAMOS LA BARRA DE BÚSQUEDA-->
+<label for="bySearch" v-show="loading">
+Busca un artista: 
+<input v-model="search" type="search" name="bySearch" placeholder="Búsqueda...">
+</label>
+
+
+<!--CARGAMOS EL COMPONENTE QUE APARECERÁ CUANDO SE VAYA EL LOADING DIV--> 
+<TopArtistsTable :artists="filteredArtists" v-show="loading"></TopArtistsTable>
+
+
+</div>
 </template>
 
 <script>
+
+
 //IMPORTANDO API DEL ARCHIVO /src/api/index.js
 import api from '@/api/index.js'
 
-import TopArtistsTable from '@/components/TopArtistsTable.vue'
 
+//IMPORTAMOS COMPONENTES PARA BUILDEAR LA PÁGINA
+import TopArtistsTable from '@/components/TopArtistsTable.vue'
 import MenuCustom from '@/components/MenuCustom.vue'
+
 
 export default {
   name: 'TopArtists',
@@ -29,20 +48,31 @@ export default {
   },
   data(){
     return {
+      //ARRAY EN EL QUE SE VA A PRINTEAR LA API
       artists: [],
+
+      //SWITCH QUE AL CAMBIAR A TRUE CAMBIA EL LOADING DIV POR EL COMPONENTE
       loading: false,
+
+      //VARIABLE QUE SE LLENA CON LO PUESTO EN EL INPUT DEL SEARCH BAR
       search: ''
     }
   },
+
   created(){
+  //FUNCIÓN QUE LLENA EL ARRAY TRACKS EN CUANTO CARGA LA PAGINA 
     api.getArtists().then(response => (this.artists = response.data.topartists.artist))
   },
+
   mounted () {
+  //FUNCIÓN QUE CAMBIA EL SWITCH DE LOADING PARA DEJAR 3SG DE CARGA
     setTimeout(() => {
       this.loading = true
-    }, 2000)
+    }, 3000)
   },
+
   computed: {
+  //FUNCIÓN QUE FILTRA EN FUNCION DE LO QUE TENGA LA SEARCH BAR
     filteredArtists(){
       // SI SEARCH ESTÁ VACÍO
       if(!this.search) {

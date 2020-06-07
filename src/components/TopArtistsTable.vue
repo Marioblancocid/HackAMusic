@@ -1,12 +1,21 @@
 <template>
   <div class="topartiststable">
-   <ul>
+
+
+    <!--PLANTILLA DE ARTISTAS QUE SE ALIMENTA DE UN ARRAY DE OBJETOS-->
+    <ul>
       <li v-for="artist in artists" :key="artist.id">
         <a :href="artist.url"><section>
         <p>ARTIST: {{ artist.name }}</p>
         <p>OYENTES: {{ artist.listeners }}</p>
         </section>
+
+
+    <!--IMAGEN DE FONDO DE CADA ARTISTA QUE SE BUILDEA CON UNA URL BASE Y USA DE KEYWORD AL ARTISTA-->
         <img :src='urlImagen + artist.name'></a>
+      
+      
+      
       </li>
     </ul>
   </div>
@@ -15,10 +24,14 @@
 <script>
 export default {
   name: 'TopArtistsTable',
+
+  //ARRAY DE OBJETOS CON TODA LA INFORMACION DE LOS ARTISTAS
   props: {
     artists: Array
   },
   data(){
+
+  //LINK QUE GENERA LA IMAGEN DE FONDO DE CADA ARTISTA AL SUMARLO A LA KEYWORD DE SU NOMBRE
     return {
       urlImagen : 'https://source.unsplash.com/random/400x200/?music,genre,'
     }
@@ -27,9 +40,6 @@ export default {
 </script>
 
 <style scoped>
-.toptagstable {
-  
-}
 ul {
   list-style-type: none;
   display: flex;

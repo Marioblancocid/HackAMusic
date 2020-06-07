@@ -1,10 +1,15 @@
 <template>
   <div class="menucustom">
   <div id="nav">
+    
+
+    <!--LINKS SUPERIORES DE CADA PÁGINA-->
       <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link :to="{ name: 'About' }">About</router-link> |
       <router-link :to="{ name: 'TopTracks' }">Top Tracks</router-link> |
       <router-link :to="{ name: 'TopArtists' }">Top Artists</router-link> 
+    
+    
     </div>
   </div>
 </template>

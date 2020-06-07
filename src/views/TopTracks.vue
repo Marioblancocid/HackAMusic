@@ -1,22 +1,38 @@
 <template>
   <div class="toptracks">
-    <vue-headful title="Top tracks"
-    description="Top tracks of the moment in spain"/>
-  <MenuCustom></MenuCustom>
-  <div class="lds-facebook" v-show=!loading><div></div><div></div><div></div></div>
-    <p v-show=!loading id="loading"> Loading, please wait...</p>
-    <TopTracksTable :tracks="tracks" v-show=loading></TopTracksTable>
 
-  </div>
+
+<!--APLICAMOS EL CAMBIO DE NOMBRE DINAMICO-->
+<vue-headful title="Top tracks"
+description="Top tracks of the moment in spain"/>
+
+
+<!--IMPORTAMOS BARRA DE LINKS--> 
+<MenuCustom></MenuCustom>
+
+
+<!--CARGAMOS EL LOADING DIV QUE DESAPARECERÁ AL CARGAR-->
+<div class="lds-facebook" v-show=!loading><div></div><div></div><div></div></div>
+<p v-show=!loading id="loading"> Loading, please wait...</p>
+
+
+<!--CARGAMOS EL COMPONENTE QUE APARECERÁ CUANDO SE VAYA EL LOADING DIV--> 
+<TopTracksTable :tracks="tracks" v-show=loading></TopTracksTable>
+
+
+</div>
 </template>
 
 <script>
+
 //IMPORTANDO API DEL ARCHIVO /src/api/index.js
 import api from '@/api/index.js'
 
-import TopTracksTable from '@/components/TopTracksTable.vue'
 
+//IMPORTAMOS COMPONENTES PARA BUILDEAR LA PÁGINA
+import TopTracksTable from '@/components/TopTracksTable.vue'
 import MenuCustom from '@/components/MenuCustom.vue'
+
 
 export default {
   name: 'TopTracks',
@@ -25,17 +41,25 @@ export default {
   },
   data(){
     return {
+      
+      //ARRAY EN EL QUE SE VA A PRINTEAR LA API
       tracks: [],
+
+      //SWITCH QUE AL CAMBIAR A TRUE CAMBIA EL LOADING DIV POR EL COMPONENTE
       loading: false
     }
   },
+
   created(){
+  //FUNCIÓN QUE LLENA EL ARRAY TRACKS EN CUANTO CARGA LA PAGINA 
     api.getTopTracks().then(response => (this.tracks = response.data.tracks.track))
   },
+
   mounted () {
+  //FUNCIÓN QUE CAMBIA EL SWITCH DE LOADING PARA DEJAR 3SG DE CARGA
     setTimeout(() => {
       this.loading = true
-    }, 2000)
+    }, 3000)
   }
 }
 </script>

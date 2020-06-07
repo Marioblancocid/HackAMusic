@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import vueHeadful from 'vue-headful'
 
+
+//IMPORTAMOS EL COMPONENTE PARA LOS TITULOS DINAMICOS
+import vueHeadful from 'vue-headful'
 Vue.component('vue-headful', vueHeadful)
+
 
 Vue.config.productionTip = false
 

@@ -1,37 +1,64 @@
 <template>
-  <div class="home">
-    <vue-headful title="Home"
-    description="The homepage of hack a music app"/>
-    <MenuCustom></MenuCustom>
-    <div class="lds-facebook" v-show=!loading><div></div><div></div><div></div></div>
-    <p v-show=!loading id="loading"> Loading, please wait...</p>
-    <TopTagsTable :tags="tags" v-show=loading></TopTagsTable></TopTagsTable>
-    </div>
+<div class="home">
+
+
+<!--APLICAMOS EL CAMBIO DE NOMBRE DINAMICO-->
+<vue-headful title="Home"
+description="The homepage of hack a music app"/>
+
+
+<!--IMPORTAMOS BARRA DE LINKS--> 
+<MenuCustom></MenuCustom>
+
+
+<!--CARGAMOS EL LOADING DIV QUE DESAPARECERÁ AL CARGAR-->
+<div class="lds-facebook" v-show=!loading><div></div><div></div><div></div></div>
+<p v-show=!loading id="loading"> Loading, please wait...</p>
+
+
+<!--CARGAMOS EL COMPONENTE QUE APARECERÁ CUANDO SE VAYA EL LOADING DIV--> 
+<TopTagsTable :tags="tags" v-show=loading></TopTagsTable></TopTagsTable>
+
+
+</div>
 </template>
 
 <script>
+
 //IMPORTANDO API DEL ARCHIVO /src/api/index.js
 import api from '@/api/index.js'
+
+
+//IMPORTAMOS COMPONENTES PARA BUILDEAR LA PÁGINA
 import TopTagsTable from '@/components/TopTagsTable.vue'
 import MenuCustom from '@/components/MenuCustom.vue'
+
 
 export default {
   name: 'Home',
   components: {
     TopTagsTable, MenuCustom
   },
+
   data(){
     return {
+      //ARRAY EN EL QUE SE VA A PRINTEAR LA API
       tags: [],
+
+      //SWITCH QUE AL CAMBIAR A TRUE CAMBIA EL LOADING DIV POR EL COMPONENTE
       loading: false
     }
   },
+
   mounted () {
+  //FUNCIÓN QUE CAMBIA EL SWITCH DE LOADING PARA DEJAR 3SG DE CARGA
     setTimeout(() => {
       this.loading = true
-    }, 2000)
+    }, 3000)
   },
+  
   created(){
+  //FUNCIÓN QUE LLENA EL ARRAY TRACKS EN CUANTO CARGA LA PAGINA 
     api.getTopTags().then(response => (this.tags = response.data.tags.tag));
   }
 }

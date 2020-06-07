@@ -1,5 +1,8 @@
 <template>
   <div class="toptrackstable">
+
+
+    <!--PLANTILLA DE TRACKS QUE SE ALIMENTA DE UN ARRAY DE OBJETOS-->
     <ul>
       <li v-for="track in tracks" :key="track.id">
         <a :href="track.artist.url"><section>
@@ -7,8 +10,12 @@
         <p>Artista: {{ track.artist.name }}</p>
         <p>Oyentes: {{ track.listeners }}</p>
         </section>
+
+
+    <!--IMAGEN DE FONDO DE CADA TRACK QUE SE BUILDEA CON UNA URL BASE Y USA DE KEYWORD EL NOMBRE DEL ARTISTA-->
         <img :src='urlImagen + track.artist.name'></a>
         
+
       </li>
     </ul>
   </div>
@@ -17,11 +24,15 @@
 <script>
 export default {
   name: 'TopTracksTable',
+
+  //ARRAY DE OBJETOS CON TODA LA INFORMACION DE LAS TRACKS
   props: {
     tracks: Array
   },
   data(){
     return {
+
+    //LINK QUE GENERA LA IMAGEN DE FONDO DE CADA TRACK AL SUMARLO A LA KEYWORD DEL NOMBRE DEL ARTISTA
       urlImagen : 'https://source.unsplash.com/random/400x200/?music,genre,'
     }
   }
